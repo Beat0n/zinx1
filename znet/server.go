@@ -83,7 +83,7 @@ func (s *Server) Serve() {
 }
 
 /*
-  创建一个服务器句柄
+  创建一个服务器句柄.
 */
 func NewServer(name string) ziface.IServer {
 	s := &Server{
