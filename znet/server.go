@@ -7,15 +7,18 @@ import (
 	"zinx/ziface"
 )
 
+//iServer 接口实现，定义一个Server服务类
 type Server struct {
-	//Server Name
+	//服务器的名称
 	Name string
 	//tcp4 or other
 	IPVersion string
-	//IP Address
+	//服务绑定的IP地址
 	IP string
-	//Port
+	//服务绑定的端口
 	Port int
+	//当前Server由用户绑定的回调router,也就是Server注册的链接对应的处理业务
+	Router ziface.IRouter
 }
 
 func (s *Server) Start() {
@@ -82,6 +85,10 @@ func (s *Server) Serve() {
 	}
 }
 
+func (s *Server) AddRouter(router ziface.IRouter) {
+
+}
+
 /*
   创建一个服务器句柄.
 */
@@ -91,6 +98,7 @@ func NewServer(name string) ziface.IServer {
 		IPVersion: "tcp4",
 		IP:        "0.0.0.0",
 		Port:      7777,
+		Router:    nil,
 	}
 
 	return s
