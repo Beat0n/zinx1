@@ -157,6 +157,5 @@ func (c *Connection) SendMsg(msgId uint32, data []byte) error {
 		c.ExitBuffChan <- true
 		return errors.New("conn Write error")
 	}
-
 	return nil
 }
